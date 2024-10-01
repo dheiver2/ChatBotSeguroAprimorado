@@ -104,8 +104,4 @@ O método `gerar_relatorio_desempenho` fornece informações sobre o desempenho 
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
-```
 
-### Observações
-- Este documento agora reflete a mudança de "chatbot" para "copiloto", mantendo a clareza e a funcionalidade.
-- Sinta-se à vontade para modificar ainda mais ou adicionar novos detalhes conforme necessário.
