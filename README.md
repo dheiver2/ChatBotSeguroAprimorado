@@ -1,91 +1,80 @@
-# Tutorial: Copiloto de Seguros
+
+# Tutorial: Usando o Copiloto Seguro Aprimorado
 
 ## Introdução
 
-O **Copiloto de Seguros** é uma classe desenvolvida para interagir com usuários em um contexto de seguros, utilizando um modelo de linguagem da Hugging Face. O bot pode responder perguntas baseadas em documentos PDF carregados, armazenar interações e coletar feedback do usuário, utilizando a abordagem de Geração Aumentada por Recuperação (RAG).
+O `CopilotoSeguroAprimorado` é uma classe desenvolvida para carregar documentos PDF, criar embeddings de texto e responder a perguntas específicas relacionadas a seguros, utilizando técnicas de Processamento de Linguagem Natural (PLN) e Modelos de Linguagem. Este tutorial irá guiá-lo através dos passos necessários para usar esta classe.
 
 ## Pré-requisitos
 
-Para usar o **Copiloto de Seguros**, você precisa ter instalado as seguintes bibliotecas:
+Antes de começar, você precisará ter as seguintes bibliotecas instaladas:
 
 ```bash
-pip install langchain_community langchain_text_splitters langchain_core
+pip install langchain langchain-community
 ```
 
-## Estrutura do Código
+Certifique-se também de que você possui documentos PDF que deseja usar como contexto para o copiloto.
 
-### 1. Importação de Bibliotecas
+## Estrutura da Classe
 
-O código começa com a importação das bibliotecas necessárias:
+A classe `CopilotoSeguroAprimorado` possui as seguintes funcionalidades principais:
+
+- **Carregar Documentos PDF**: Lê e divide os documentos PDF em partes menores.
+- **Criar Embeddings**: Gera representações vetoriais dos textos utilizando um modelo de linguagem.
+- **Responder Perguntas**: Permite fazer perguntas e fornece respostas baseadas nos documentos carregados.
+- **Coletar Feedback**: Armazena o feedback do usuário sobre as respostas dadas.
+- **Gerar Relatórios de Desempenho**: Fornece estatísticas sobre o desempenho do copiloto.
+
+## Como Usar
+
+### Passo 1: Importar a Classe
+
+Primeiro, importe a classe `CopilotoSeguroAprimorado` no seu script Python.
 
 ```python
-import os
-import time
-from langchain_community.document_loaders import PyPDFLoader
-from langchain_community.embeddings.sentence_transformer import SentenceTransformerEmbeddings
-from langchain_community.vectorstores import Chroma
-from langchain_text_splitters import RecursiveCharacterTextSplitter
-from langchain_community.llms import HuggingFaceEndpoint
-from langchain.chains import ConversationalRetrievalChain
-from langchain.memory import ConversationBufferMemory
-from langchain_core.prompts import PromptTemplate
-from IPython.display import display, Markdown
+from seu_modulo import CopilotoSeguroAprimorado
 ```
 
-### 2. Classe `CopilotoDeSeguros`
+### Passo 2: Criar uma Instância do Copiloto
 
-A classe principal é `CopilotoDeSeguros`. Abaixo está a descrição dos métodos e atributos principais.
-
-#### Atributos
-
-- `caminho_pdfs`: Caminho para os arquivos PDF a serem carregados.
-- `repo_id`: ID do modelo de linguagem a ser utilizado.
-- `paginas_pdfs`: Lista para armazenar páginas de PDFs carregados.
-- `armazenamento_vetorial`: Armazenamento vetorial para busca.
-- `llm`: Modelo de linguagem.
-- `memoria`: Memória para armazenamento do histórico de interações.
-- `historico_interacoes`: Lista de interações com o usuário.
-- `total_perguntas`: Contador total de perguntas feitas.
-- `respostas_bem_sucedidas`: Contador de respostas válidas.
-- `feedback_usuario`: Armazena feedback do usuário.
-- `tempo_inicio`: Marca o tempo de início do bot.
-
-#### Métodos
-
-1. **`__init__`**: Inicializa o bot, carrega documentos, cria embeddings e inicializa o modelo de linguagem.
-2. **`carregar_documentos`**: Carrega e divide documentos PDF do caminho especificado.
-3. **`criar_embeddings`**: Cria embeddings e os armazena em um banco de dados vetorial.
-4. **`inicializar_llm`**: Inicializa o modelo de linguagem a partir do ID fornecido.
-5. **`obter_resposta`**: Obtém uma resposta para uma pergunta com base nos documentos carregados utilizando RAG.
-6. **`salvar_resposta`**: Salva a resposta em um arquivo de texto.
-7. **`coletar_feedback_usuario`**: Coleta feedback do usuário sobre a resposta fornecida.
-8. **`buscar_por_palavra_chave`**: Busca por respostas nos documentos carregados com base em uma palavra-chave.
-9. **`limpar_memoria`**: Limpa o histórico da conversa.
-10. **`listar_documentos_carregados`**: Lista os documentos que foram carregados.
-11. **`contar_palavras_na_resposta`**: Conta o número de palavras na resposta.
-12. **`formatar_resposta`**: Formata a resposta para exibição.
-13. **`gerar_relatorio_desempenho`**: Gera um relatório de desempenho com estatísticas sobre interações.
-
-### Exemplo de Uso
-
-A seguir, um exemplo de como utilizar a classe:
+Crie uma instância do copiloto, especificando o caminho para os documentos PDF.
 
 ```python
-# Criar uma instância do Copiloto
-bot = CopilotoDeSeguros('/kaggle/input/chat-banco', repo_id="google/gemma-1.1-2b-it")
+copiloto = CopilotoSeguroAprimorado(caminho_pdfs="/caminho/para/seus/pdfs")
+```
 
-# Fazer uma pergunta ao bot
-pergunta = "O que é seguro Santander?"
-resposta = bot.obter_resposta(pergunta)
+### Passo 3: Fazer uma Pergunta
 
-# Exibir a resposta formatada
-display(Markdown(bot.formatar_resposta(resposta)))
+Utilize o método `obter_resposta` para fazer perguntas ao copiloto. Por exemplo:
 
-# Exibir o relatório de desempenho
-relatorio = bot.gerar_relatorio_desempenho()
-display(Markdown(relatorio))
+```python
+resposta = copiloto.obter_resposta("Qual é a cobertura do seguro Bradesco?")
+```
+
+### Passo 4: Formatar e Exibir a Resposta
+
+Você pode formatar a resposta usando o método `formatar_resposta`.
+
+```python
+print(copiloto.formatar_resposta(resposta))
+```
+
+### Passo 5: Coletar Feedback do Usuário
+
+Para coletar feedback sobre a resposta fornecida, utilize o método `coletar_feedback_usuario`:
+
+```python
+copiloto.coletar_feedback_usuario("Qual é a cobertura do seguro Bradesco?", "A resposta foi útil.")
+```
+
+### Passo 6: Gerar Relatório de Desempenho
+
+Para obter um relatório de desempenho do copiloto, utilize o método `gerar_relatorio_desempenho`:
+
+```python
+print(copiloto.gerar_relatorio_desempenho())
 ```
 
 ## Conclusão
 
-O **Copiloto de Seguros** é uma ferramenta poderosa para responder a perguntas em um contexto de seguros, utilizando inteligência artificial. Com suas funcionalidades, como coleta de feedback e geração de relatórios de desempenho, é possível aprimorar continuamente a experiência do usuário.
+O `CopilotoSeguroAprimorado` fornece uma maneira eficaz de interagir com documentos PDF e obter informações relevantes sobre seguros. Você pode expandir suas funcionalidades conforme necessário e integrá-lo a outras aplicações.
