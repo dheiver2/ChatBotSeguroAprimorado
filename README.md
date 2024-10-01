@@ -1,12 +1,12 @@
-# Tutorial: ChatBotSeguroAprimorado
+# Tutorial: Copiloto de Seguros
 
 ## Introdução
 
-O `ChatBotSeguroAprimorado` é uma classe desenvolvida para interagir com usuários em um contexto de seguros, utilizando um modelo de linguagem da Hugging Face. O bot pode responder perguntas baseadas em documentos PDF carregados, armazenar interações e coletar feedback do usuário.
+O **Copiloto de Seguros** é uma classe desenvolvida para interagir com usuários em um contexto de seguros, utilizando um modelo de linguagem da Hugging Face. O bot pode responder perguntas baseadas em documentos PDF carregados, armazenar interações e coletar feedback do usuário, utilizando a abordagem de Geração Aumentada por Recuperação (RAG).
 
 ## Pré-requisitos
 
-Para usar o `ChatBotSeguroAprimorado`, você precisa ter instalado as seguintes bibliotecas:
+Para usar o **Copiloto de Seguros**, você precisa ter instalado as seguintes bibliotecas:
 
 ```bash
 pip install langchain_community langchain_text_splitters langchain_core
@@ -32,9 +32,9 @@ from langchain_core.prompts import PromptTemplate
 from IPython.display import display, Markdown
 ```
 
-### 2. Classe `ChatBotSeguroAprimorado`
+### 2. Classe `CopilotoDeSeguros`
 
-A classe principal é `ChatBotSeguroAprimorado`. Abaixo está a descrição dos métodos e atributos principais.
+A classe principal é `CopilotoDeSeguros`. Abaixo está a descrição dos métodos e atributos principais.
 
 #### Atributos
 
@@ -56,7 +56,7 @@ A classe principal é `ChatBotSeguroAprimorado`. Abaixo está a descrição dos 
 2. **`carregar_documentos`**: Carrega e divide documentos PDF do caminho especificado.
 3. **`criar_embeddings`**: Cria embeddings e os armazena em um banco de dados vetorial.
 4. **`inicializar_llm`**: Inicializa o modelo de linguagem a partir do ID fornecido.
-5. **`obter_resposta`**: Obtém uma resposta para uma pergunta com base nos documentos carregados.
+5. **`obter_resposta`**: Obtém uma resposta para uma pergunta com base nos documentos carregados utilizando RAG.
 6. **`salvar_resposta`**: Salva a resposta em um arquivo de texto.
 7. **`coletar_feedback_usuario`**: Coleta feedback do usuário sobre a resposta fornecida.
 8. **`buscar_por_palavra_chave`**: Busca por respostas nos documentos carregados com base em uma palavra-chave.
@@ -71,8 +71,8 @@ A classe principal é `ChatBotSeguroAprimorado`. Abaixo está a descrição dos 
 A seguir, um exemplo de como utilizar a classe:
 
 ```python
-# Criar uma instância do ChatBot
-bot = ChatBotSeguroAprimorado('/kaggle/input/chat-banco', repo_id="google/gemma-1.1-2b-it")
+# Criar uma instância do Copiloto
+bot = CopilotoDeSeguros('/kaggle/input/chat-banco', repo_id="google/gemma-1.1-2b-it")
 
 # Fazer uma pergunta ao bot
 pergunta = "O que é seguro Santander?"
@@ -88,4 +88,4 @@ display(Markdown(relatorio))
 
 ## Conclusão
 
-O `ChatBotSeguroAprimorado` é uma ferramenta poderosa para responder a perguntas em um contexto de seguros, utilizando inteligência artificial. Com suas funcionalidades, como coleta de feedback e geração de relatórios de desempenho, é possível aprimorar continuamente a experiência do usuário.
+O **Copiloto de Seguros** é uma ferramenta poderosa para responder a perguntas em um contexto de seguros, utilizando inteligência artificial. Com suas funcionalidades, como coleta de feedback e geração de relatórios de desempenho, é possível aprimorar continuamente a experiência do usuário.
