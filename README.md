@@ -1,4 +1,3 @@
-```markdown
 # Tutorial: ChatBotSeguroAprimorado
 
 ## Introdução
@@ -90,9 +89,3 @@ display(Markdown(relatorio))
 ## Conclusão
 
 O `ChatBotSeguroAprimorado` é uma ferramenta poderosa para responder a perguntas em um contexto de seguros, utilizando inteligência artificial. Com suas funcionalidades, como coleta de feedback e geração de relatórios de desempenho, é possível aprimorar continuamente a experiência do usuário.
-```
-
-### Como usar este Markdown
-
-- Copie o conteúdo acima e cole em um arquivo com a extensão `.md`.
-- Você pode visualizar este arquivo em qualquer editor de Markdown ou usar plataformas como GitHub para visualização.
