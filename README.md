@@ -1,7 +1,6 @@
+# Copiloto Seguro Aprimorado
 
-# ChatBot Seguro Aprimorado
-
-Um chatbot projetado para fornecer respostas sobre seguros utilizando documentos PDF como fonte de informações. O chatbot usa técnicas de processamento de linguagem natural (NLP) e embeddings para responder perguntas de forma eficaz.
+Um copiloto projetado para fornecer respostas sobre seguros utilizando documentos PDF como fonte de informações. O copiloto usa técnicas de processamento de linguagem natural (NLP) e embeddings para responder perguntas de forma eficaz.
 
 ## Índice
 - [Visão Geral](#visão-geral)
@@ -14,7 +13,7 @@ Um chatbot projetado para fornecer respostas sobre seguros utilizando documentos
 
 ## Visão Geral
 
-Este chatbot é capaz de:
+Este copiloto é capaz de:
 - Carregar e processar documentos PDF.
 - Criar embeddings a partir do texto contido nos PDFs.
 - Responder perguntas de forma conversacional com base no conteúdo dos documentos carregados.
@@ -30,7 +29,7 @@ Este chatbot é capaz de:
 
 ## Instalação
 
-Para executar o chatbot, você precisará ter o Python instalado. Em seguida, instale as dependências necessárias usando pip:
+Para executar o copiloto, você precisará ter o Python instalado. Em seguida, instale as dependências necessárias usando pip:
 
 ```bash
 pip install langchain langchain-community sentence-transformers chroma ipython
@@ -61,11 +60,11 @@ pergunta_usuario = "Qual é a definição de seguro de vida?"
 
 ## Estrutura do Código
 
-### 1. Classe `ChatBotSeguroAprimorado`
+### 1. Classe `CopilotoSeguroAprimorado`
 
-Esta classe é responsável por toda a lógica do chatbot. Suas principais funcionalidades incluem:
+Esta classe é responsável por toda a lógica do copiloto. Suas principais funcionalidades incluem:
 
-- **`__init__`**: Inicializa o chatbot, carrega documentos, cria embeddings e inicializa o modelo de linguagem.
+- **`__init__`**: Inicializa o copiloto, carrega documentos, cria embeddings e inicializa o modelo de linguagem.
 - **`carregar_documentos`**: Carrega e divide documentos PDF do caminho especificado.
 - **`criar_embeddings`**: Cria embeddings e os armazena no Chroma.
 - **`inicializar_llm`**: Inicializa o modelo de linguagem com um endpoint da Hugging Face.
@@ -77,25 +76,25 @@ Esta classe é responsável por toda a lógica do chatbot. Suas principais funci
 - **`listar_documentos_carregados`**: Lista os documentos que foram carregados.
 - **`contar_palavras_na_resposta`**: Conta o número de palavras na resposta.
 - **`formatar_resposta`**: Formata a resposta para exibição.
-- **`gerar_relatorio_desempenho`**: Gera um relatório de desempenho do chatbot.
+- **`gerar_relatorio_desempenho`**: Gera um relatório de desempenho do copiloto.
 
 ### 2. Exemplo de Uso
 
-O código na parte inferior do script demonstra como instanciar o chatbot, fazer uma pergunta e exibir a resposta formatada.
+O código na parte inferior do script demonstra como instanciar o copiloto, fazer uma pergunta e exibir a resposta formatada.
 
 ```python
 if __name__ == "__main__":
-    chatbot = ChatBotSeguroAprimorado(caminho_pdfs="./seus_pdfs")
+    copiloto = CopilotoSeguroAprimorado(caminho_pdfs="./seus_pdfs")
     pergunta_usuario = "Qual é a definição de seguro de vida?"
-    resposta = chatbot.obter_resposta(pergunta_usuario)
-    resposta_formatada = chatbot.formatar_resposta(resposta)
+    resposta = copiloto.obter_resposta(pergunta_usuario)
+    resposta_formatada = copiloto.formatar_resposta(resposta)
     display(Markdown(resposta_formatada))
-    print(chatbot.gerar_relatorio_desempenho())
+    print(copiloto.gerar_relatorio_desempenho())
 ```
 
 ## Geração de Relatórios
 
-O método `gerar_relatorio_desempenho` fornece informações sobre o desempenho do chatbot, incluindo:
+O método `gerar_relatorio_desempenho` fornece informações sobre o desempenho do copiloto, incluindo:
 - Total de Perguntas
 - Respostas Bem-Sucedidas
 - Respostas Incorretas
@@ -105,3 +104,8 @@ O método `gerar_relatorio_desempenho` fornece informações sobre o desempenho 
 ## Contribuições
 
 Contribuições são bem-vindas! Sinta-se à vontade para abrir uma issue ou enviar um pull request.
+```
+
+### Observações
+- Este documento agora reflete a mudança de "chatbot" para "copiloto", mantendo a clareza e a funcionalidade.
+- Sinta-se à vontade para modificar ainda mais ou adicionar novos detalhes conforme necessário.
